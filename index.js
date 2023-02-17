@@ -1,4 +1,6 @@
-const usrInput = document.getElementById('input-number');
+import './style.css';
+
+const userInput = document.getElementById('input-number');
 const addBtn = document.getElementById('btn-add');
 const subtractBtn = document.getElementById('btn-subtract');
 const multiplyBtn = document.getElementById('btn-multiply');
@@ -14,44 +16,43 @@ function outputResult(result, text) {
 const defaultResult = 0;
 let currentResult = defaultResult;
 
-function getUserNumberInput() {
-  return parseInt(usrInput.value);
+function getUserInput() {
+  return parseInt(userInput.value);
 }
 
 function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
-  const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
-  outputResult(currentResult, calcDescription);
+  const descInput = `${resultBeforeCalc} ${operator} ${calcNumber}`;
+  outputResult(currentResult, descInput);
 }
 
 function add() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult = currentResult + enteredNumber;
-  createAndWriteOutput('+', initialResult, enteredNumber);
+  const getInputNumber = getUserInput();
+  const initialInput = currentResult;
+  // const descInput = `${currentResult} + ${getInputNumber}`;
+  currentResult = currentResult + getInputNumber;
+  // outputResult(currentResult, descInput);
+  createAndWriteOutput('+', initialInput, getInputNumber);
 }
-
-function subtract() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult = currentResult - enteredNumber;
-  createAndWriteOutput('-', initialResult, enteredNumber);
+function sub() {
+  const getInputNumber = getUserInput();
+  const initialInput = currentResult;
+  currentResult = currentResult - getInputNumber;
+  createAndWriteOutput('-', initialInput, getInputNumber);
 }
-
-function multiply() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult = currentResult * enteredNumber;
-  createAndWriteOutput('*', initialResult, enteredNumber);
+function mul() {
+  const getInputNumber = getUserInput();
+  const initialInput = currentResult;
+  currentResult = currentResult * getInputNumber;
+  createAndWriteOutput('*', initialInput, getInputNumber);
 }
-
-function divide() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult = currentResult / enteredNumber;
-  createAndWriteOutput('/', initialResult, enteredNumber);
+function div() {
+  const getInputNumber = getUserInput();
+  const initialInput = currentResult;
+  currentResult = currentResult / getInputNumber;
+  createAndWriteOutput('/', initialInput, getInputNumber);
 }
 
 addBtn.addEventListener('click', add);
-subtractBtn.addEventListener('click', subtract);
-multiplyBtn.addEventListener('click', multiply);
-divideBtn.addEventListener('click', divide);
+subtractBtn.addEventListener('click', sub);
+multiplyBtn.addEventListener('click', mul);
+divideBtn.addEventListener('click', div);

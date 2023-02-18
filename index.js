@@ -15,6 +15,7 @@ function outputResult(result, text) {
 }
 const defaultResult = 0;
 let currentResult = defaultResult;
+let logEntry = [];
 
 function getUserInput() {
   return parseInt(userInput.value);
@@ -25,6 +26,17 @@ function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
   outputResult(currentResult, descInput);
 }
 
+function writeToLog(operat, preNum, enterNum, endResult) {
+  const logEntries = {
+    operator: operat,
+    prevNumber: preNum,
+    enterNumber: enterNum,
+    result: endResult,
+  };
+  logEntry.push(logEntries);
+  console.log(logEntry);
+}
+
 function add() {
   const getInputNumber = getUserInput();
   const initialInput = currentResult;
@@ -32,24 +44,28 @@ function add() {
   currentResult = currentResult + getInputNumber;
   // outputResult(currentResult, descInput);
   createAndWriteOutput('+', initialInput, getInputNumber);
+  writeToLog('ADD', initialInput, getInputNumber, currentResult);
 }
 function sub() {
   const getInputNumber = getUserInput();
   const initialInput = currentResult;
   currentResult = currentResult - getInputNumber;
   createAndWriteOutput('-', initialInput, getInputNumber);
+  writeToLog('SUB', initialInput, getInputNumber, currentResult);
 }
 function mul() {
   const getInputNumber = getUserInput();
   const initialInput = currentResult;
   currentResult = currentResult * getInputNumber;
   createAndWriteOutput('*', initialInput, getInputNumber);
+  writeToLog('MUL', initialInput, getInputNumber, currentResult);
 }
 function div() {
   const getInputNumber = getUserInput();
   const initialInput = currentResult;
   currentResult = currentResult / getInputNumber;
   createAndWriteOutput('/', initialInput, getInputNumber);
+  writeToLog('DIV', initialInput, getInputNumber, currentResult);
 }
 
 addBtn.addEventListener('click', add);
